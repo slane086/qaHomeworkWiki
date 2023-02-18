@@ -45,17 +45,20 @@ describe("Employee Manager 1.2", () => {
         5. Verify the name field is the original name
         */
         await driver.findElement(bernice).click();
+        // opening bernice ortiz
         await driver.wait(
             until.elementIsVisible(await driver.findElement(nameInput))
         );
         await driver.findElement(By.name("nameInput")).clear();
         await driver.findElement(By.name("nameInput")).sendKeys("Test Name");
+        // editing the name input
         await driver.findElement(By.name("phillip")).click();
         await driver.wait(
             until.elementTextContains(
             await driver.findElement(nameDisplay)),
             "Phillip"
             )
+            // opening phillip weaver
         );
         await driver.findElement(bernice).click();
         await driver.wait(
@@ -63,10 +66,12 @@ describe("Employee Manager 1.2", () => {
             await driver.findElement(nameDisplay),
             "Bernice"
             )
+            // opening bernice ortiz
         );
         expect(
             await (await driver.findElement(nameInput)).getAttribute("")
         ).toBe("");
+        // verify name
         });
 
         test("A canceled change doesn't persist", async () => {
@@ -78,15 +83,19 @@ describe("Employee Manager 1.2", () => {
             5. Verify the name field is the original name
             */
             await driver.findElement(phillip).click();
+            // open phillip weaver
             await driver.wait(
                 until.elementIsVisible(await driver.findElement(nameInput))
             );
             await driver.findElement(By.name(nameInput)).clear();
             await driver.findElement(By.name(nameInput)).sendKeys("Test Name");
+            // edit name input
             await driver.findElement(cancelButton).click();
+            // cancel
             expect(
                 await (await driver.findElement(nameInput)).getAttribute("")
             ).toBe("");
+            // verify name
         });
 
         test("A saved change persists", async () => {
@@ -100,23 +109,29 @@ describe("Employee Manager 1.2", () => {
             5. Verify the name field is the edited name
             */
             await driver.findElement(bernice).click();
+            open bernice ortiz
             await driver.wait(
                 until.elementIsVisible(await driver.findElement(nameInput))
             );
             await driver.findElement(nameInput).clear();
             await driver.findElement(nameInput).sendKeys("Test Name");
+            // edit name input
             await driver.findElement(saveButton).click();
+            // save
             await driver.findElement(phillip).click();
             await driver.wait(
                 until.elementTextContains(
                 await driver.findElement(bernice),
                 "Phillip"
                 )
+                // open phillip weaver
             );
             await driver.findElement(bernice).click();
+            // open bernice ortiz(old record)
             expect(
                 await (await driver.findElement(nameInput)).getAttribute("value")
             ).toBe("Bernice Ortiz");
+            // verify name field
     });
 });
 
@@ -130,16 +145,20 @@ describe("Employee Manager 1.2", () => {
             4. Verify the error is present
             */
             await driver.findElement(bernice).click();
+            // open bernice ortiz
             await driver.wait(
                 until.elementIsVisible(await driver.findElement(nameInput))
             );
             await driver.findElement(nameInput).clear();
             await driver.findElement(nameInput).sendKeys(Key.SPACE, Key.BACK_SPACE);
+            // clear name input
             await driver.findElement(saveButton).click();
+            // save
             await driver.wait(until.elementLocated(errorCard)));
             expect(await (await driver.findElement(errorCard)).getText()).toBe(
                 "The name field must be between 1 and 30 characters long."
             );
+            // verify error
         });
         test("lets you cancel out of an error message", async () => {
             /*
@@ -152,20 +171,26 @@ describe("Employee Manager 1.2", () => {
             6. Verify the error is gone
             */
             await driver.findElement(bernice).click();
+            // open bernice ortiz
             await driver.wait(
                 until.elementIsVisible(await driver.findElement(nameInput))
             );
             await driver.findElement(nameInput).clear();
             await driver.findElement(nameInput).sendKeys(Key.SPACE, Key.BACK_SPACE);
+            // clear name input
             await driver.findElement(saveButton).click();
+            // save
             await driver.wait(until.elementLocated(errorCard));
             expect(await (await driver.findElement(errorCard)).getText()).toBe(
                 "The name field must be between 1 and 30 characters long."
             );
+            // verify error(present)
             await driver.findElement(nameInput).sendKeys(Key.SPACE);
             await driver.findElement(cancelButton).click();
+            // cancel change
             driver.wait(() => true, 500);
             expect(await driver.findElements(errorCard)).toHaveLength(0);
+            // verify error gone
         });
     });
 });
