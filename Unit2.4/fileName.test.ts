@@ -70,7 +70,7 @@ describe("Employee Manager 1.2", () => {
         );
         expect(
             await (await driver.findElement(nameInput)).getAttribute("")
-        ).toBe("");
+        ).toBe("Phillip Weaver");
         // verify name
         });
 
@@ -109,7 +109,7 @@ describe("Employee Manager 1.2", () => {
             5. Verify the name field is the edited name
             */
             await driver.findElement(bernice).click();
-            open bernice ortiz
+            // open bernice ortiz
             await driver.wait(
                 until.elementIsVisible(await driver.findElement(nameInput))
             );
@@ -121,7 +121,7 @@ describe("Employee Manager 1.2", () => {
             await driver.findElement(phillip).click();
             await driver.wait(
                 until.elementTextContains(
-                await driver.findElement(bernice),
+                await driver.findElement(),
                 "Phillip"
                 )
                 // open phillip weaver
