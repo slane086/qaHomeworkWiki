@@ -19,7 +19,7 @@ import {Builder,By, Capabilities, Locator, until, WebDriver, } from "selenium-we
         titleInput: By = By.name("titleEntry")
   }
         constructor(driver: WebDriver){
-            constructor(driver: WebDriver){
+        
                 this.driver = driver
             }
             async navigate() {
@@ -35,7 +35,7 @@ import {Builder,By, Capabilities, Locator, until, WebDriver, } from "selenium-we
             await this.driver.wait(until.elementLocated(elementBy))
             return this.driver.findElement(elementBy).sendKeys(keys)
         }
-  }
+  
   const emPage = new employeePage(driver);
 
   describe("Employee Manager Test", () => {

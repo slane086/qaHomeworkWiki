@@ -1,2 +1,0 @@
-This is to show git
-Git is fun when you understand it
