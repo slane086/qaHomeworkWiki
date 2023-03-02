@@ -1,4 +1,4 @@
-import { SpecPage } from "./SpecPage";
+import { SpecPage } from "../../QRPT10/Unit2.7/SpecPageSolution";
 const chromedriver = require("chromedriver");
 import { WebDriver, Builder, Capabilities } from "selenium-webdriver";
 
